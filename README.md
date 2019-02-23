@@ -1,2 +1,2 @@
 # Balloono
-This is the respository for HackTCNJ's idea.
+This is the repository for HackTCNJ's idea.
