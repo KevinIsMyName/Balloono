@@ -25,7 +25,16 @@
         }
     </style>
     <script>
+        document.addEventListener("keydown", keyDownTextField);
 
+        function keyDownTextField(e) {
+            var keyCode = e.keyCode;
+            if(keyCode===87) {
+                alert("You hit the enter key.");
+            } else {
+                alert("Oh no you didn't.");
+            }
+        }
     </script>
 </head>
 <body>
