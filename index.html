@@ -51,11 +51,10 @@
                 alert("You moved into an obstacle");
             } else if (document.getElementById(newPos).className === "box") {
                 alert("You moved into a box");
-            } else if (num < 1 && num > 10) {
+            } else if (num < 1 && num > 10) { //Unnecessary
                 alert("You went off the board");
             } else {
                 userPos = newPos;
-                //Update board
                 updateBoard(currentPos, userPos);
             }
             alert(userPos);
@@ -72,11 +71,10 @@
                 alert("You moved into an obstacle");
             } else if (document.getElementById(newPos).className === "box") {
                 alert("You moved into a box");
-            } else if (letter >= 65 && letter <= 81) {
+            } else if (letter >= 65 && letter <= 81) { //Unnecessary
                 alert("You went off board");
             } else {
                 userPos = newPos;
-                //Update board
                 updateBoard(currentPos, userPos);
             }
             alert(userPos);
@@ -91,11 +89,10 @@
                 alert("You moved into an obstacle");
             } else if (document.getElementById(newPos).className === "box") {
                 alert("You moved into a box");
-            } else if (number < 1 && number > 10) {
+            } else if (number < 1 && number > 10) { //Unnecessary
                 alert("You went off the board");
             } else {
                 userPos = newPos;
-                //Update board
                 updateBoard(currentPos, userPos);
             }
             alert(userPos)
@@ -112,10 +109,9 @@
             } else if (document.getElementById(newPos).className === "box") {
                 alert("You moved into a box");
             } else if (letter >= 65 && letter <= 81) {
-                alert("You went off board");
+                alert("You went off board"); //Unnecessary
             } else {
                 userPos = newPos;
-                //Update board
                 updateBoard(currentPos, userPos);
             }
             alert(userPos);
