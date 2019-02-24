@@ -24,6 +24,27 @@
             background-color: saddlebrown;
         }
     </style>
+    <script>
+        document.addEventListener("keydown", keyDownTextField);
+
+        function keyDownTextField(e) {
+            var keyCode = e.keyCode;
+            switch(keyCode) {
+                case 87:
+                    alert("You hit the w key.");
+                    break;
+                case 65:
+                    alert("u pressed a");
+                    break;
+                case 83:
+                    alert("u pressed s");
+                    break;
+                case 68:
+                    alert("u pressed d");
+                    break;
+            }
+        }
+        </script>
 </head>
 <body>
 <table>
@@ -68,7 +89,7 @@
             cell
         </td>
         <td id="n1" class="box">
-            cell
+            &#9820;
         </td>
         <td id="o1" class="box">
             cell
