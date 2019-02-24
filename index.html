@@ -24,6 +24,10 @@
             background-color: saddlebrown;
         }
 
+        .user {
+
+        }
+
         .empty {
             background-color: white; /* This color should be changed later */
         }
@@ -33,9 +37,21 @@
 
         var userPos = "b2";
 
-
         function moveUp(){
-
+            let currentPos = userPos;
+            let letter = currentPos.charAt(0);
+            let num = currentPos.substring(1, currentPos.length);
+            num -= 1;
+            if (document.getElementById(newPos).class === "obstacle") {
+                alert("YO SHITS FUCKED")
+            }
+            else if (num < 1 && num > 10){
+                alert("YO SHITS FUCKED")
+            }
+            else{
+                userPos = newPos;
+            }
+            alert(letter + num)
         }
         function moveLeft(){
 
