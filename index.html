@@ -23,24 +23,45 @@
         .box {
             background-color: saddlebrown;
         }
+
+        .empty {
+            background-color: white; /* This color should be changed later */
+        }
     </style>
     <script>
         document.addEventListener("keydown", keyDownTextField);
 
+        var userPos = "b2";
+
+
+        function moveUp(){
+
+        }
+        function moveLeft(){
+
+        }
+        function moveDown(){
+
+        }
+        function moveRight(){
+
+        }
+
         function keyDownTextField(e) {
             var keyCode = e.keyCode;
+            keyCode = String.fromCharCode(keyCode);
             switch(keyCode) {
-                case 87:
-                    alert("You hit the w key.");
+                case 'W':
+                    moveUp();
                     break;
-                case 65:
-                    alert("u pressed a");
+                case 'A':
+                    moveLeft();
                     break;
-                case 83:
-                    alert("u pressed s");
+                case 'S':
+                    moveDown();
                     break;
-                case 68:
-                    alert("u pressed d");
+                case 'D':
+                    moveRight();
                     break;
             }
         }
