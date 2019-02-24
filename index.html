@@ -40,23 +40,36 @@
         function moveUp() {
             let currentPos = userPos;
             let letter = currentPos.charAt(0);
-            let num = currentPos.substring(1, currentPos.length);
+            let num = parseInt(currentPos.substring(1, currentPos.length));
             num -= 1;
-            if (document.getElementById(newPos).class === "obstacle") {
-                alert("YO SHITS FUCKED")
+            let newPos = letter + num.toString();
+            if (document.getElementById(newPos).className === "obstacle") {
+                alert("You moved into an obstacle");
             } else if (num < 1 && num > 10) {
-                alert("YO SHITS FUCKED")
+                alert("You went off the board");
             } else {
                 userPos = newPos;
+                //Update board
             }
-            alert(letter + num)
+            alert(userPos);
         }
 
         function moveLeft() {
             let currentPos = userPos;
             let letter = currentPos.charAt(0);
             let num = currentPos.substring(1, currentPos.length);
-            num =
+            let letterValue = letter.charCodeAt(0) - 1;
+            letter = String.fromCharCode(letterValue);
+            let newPos = letter + num;
+            if (document.getElementById(newPos).className === "obstacle") {
+                alert("You moved into an obstacle");
+            } else if (letter >= 65 && letter <= 81) {
+                alert("You went off board");
+            } else {
+                userPos = newPos;
+                //Update board
+            }
+            alert(userPos);
         }
 
         function moveDown() {
@@ -65,21 +78,31 @@
             let number = parseInt(currentPos.substring(1, currentPos.length)) + 1;
             let newPos = letter + number.toString();
             if (document.getElementById(newPos).className === "obstacle") {
-                newPos = userPos;
+                alert("You moved into an obstacle");
+            } else if (number < 1 && number > 10) {
+                alert("You went off the board");
+            } else {
+                userPos = newPos;
+                //Update board
             }
-            return newPos
+            alert(userPos)
         }
 
         function moveRight() {
-            let currentPos =  userPos;
+            let currentPos = userPos;
             let letter = (currentPos.charCodeAt(0) + 1);
-            let newLetter  = String.fromCharCode(letter);
+            let newLetter = String.fromCharCode(letter);
             let number = currentPos.substring(1, currentPos.length);
             let newPos = newLetter + number;
             if (document.getElementById(newPos).className === "obstacle") {
-                newPos = userPos;
+                alert("You moved into an obstacle");
+            } else if (letter >= 65 && letter <= 81) {
+                alert("You went off board");
+            } else {
+                userPos = newPos;
+                //Update board
             }
-            return newPos
+            alert(userPos);
         }
 
         function keyDownTextField(e) {
