@@ -36,7 +36,7 @@
         document.addEventListener("keydown", keyDownTextField);
         var userPos = "b2";
 
-        function updateBoard(oldPos, newPos) {
+        function updateBoardMove(oldPos, newPos) {
             document.getElementById(oldPos).innerHTML = "";
             document.getElementById(newPos).innerHTML = "&#9820;";
         }
@@ -48,16 +48,12 @@
             num -= 1;
             let newPos = letter + num.toString();
             if (document.getElementById(newPos).className === "obstacle") {
-                alert("You moved into an obstacle");
             } else if (document.getElementById(newPos).className === "box") {
-                alert("You moved into a box");
-            } else if (num < 1 && num > 10) { //Unnecessary
-                alert("You went off the board");
+            } else if (num < 1 && num > 10) { 
             } else {
                 userPos = newPos;
-                updateBoard(currentPos, userPos);
+                updateBoardMove(currentPos, userPos);
             }
-            alert(userPos);
         }
 
         function moveLeft() {
@@ -68,16 +64,12 @@
             letter = String.fromCharCode(letterValue);
             let newPos = letter + num;
             if (document.getElementById(newPos).className === "obstacle") {
-                alert("You moved into an obstacle");
             } else if (document.getElementById(newPos).className === "box") {
-                alert("You moved into a box");
-            } else if (letter >= 65 && letter <= 81) { //Unnecessary
-                alert("You went off board");
+            } else if (letter >= 65 && letter <= 81) { 
             } else {
                 userPos = newPos;
-                updateBoard(currentPos, userPos);
+                updateBoardMove(currentPos, userPos);
             }
-            alert(userPos);
         }
 
         function moveDown() {
@@ -86,16 +78,12 @@
             let number = parseInt(currentPos.substring(1, currentPos.length)) + 1;
             let newPos = letter + number.toString();
             if (document.getElementById(newPos).className === "obstacle") {
-                alert("You moved into an obstacle");
             } else if (document.getElementById(newPos).className === "box") {
-                alert("You moved into a box");
-            } else if (number < 1 && number > 10) { //Unnecessary
-                alert("You went off the board");
+            } else if (number < 1 && number > 10) { 
             } else {
                 userPos = newPos;
-                updateBoard(currentPos, userPos);
+                updateBoardMove(currentPos, userPos);
             }
-            alert(userPos)
         }
 
         function moveRight() {
@@ -105,16 +93,19 @@
             let number = currentPos.substring(1, currentPos.length);
             let newPos = newLetter + number;
             if (document.getElementById(newPos).className === "obstacle") {
-                alert("You moved into an obstacle");
             } else if (document.getElementById(newPos).className === "box") {
-                alert("You moved into a box");
             } else if (letter >= 65 && letter <= 81) {
-                alert("You went off board"); //Unnecessary
             } else {
                 userPos = newPos;
-                updateBoard(currentPos, userPos);
+                updateBoardMove(currentPos, userPos);
             }
-            alert(userPos);
+        }
+
+        function placeBomb(userPos) {
+            document.getElementById(userPos).style.backgroundColor = "darkblue";
+            setTimeout(function () {
+                document.getElementById(userPos).style.backgroundColor = "skyblue";
+            }, 3000);
         }
 
         function keyDownTextField(e) {
@@ -132,6 +123,9 @@
                     break;
                 case 'D':
                     moveRight();
+                    break;
+                case ' ':
+                    placeBomb(userPos);
                     break;
             }
         }
@@ -198,7 +192,7 @@
             obstacle
         </td>
         <td id="b2" class="grass">
-            grass
+            &#9820;
         </td>
         <td id="c2" class="grass">
             grass
