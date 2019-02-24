@@ -44,7 +44,6 @@
 
         document.addEventListener("keydown", keyDownTextField);
         var userPos = "b2";
-        var crate = "Bombs Away";
 
         function updateBoardMove(oldPos, newPos) {
             document.getElementById(oldPos).innerHTML = "";
@@ -142,7 +141,7 @@
                     continue;
                 }
                 else {
-                    document.getElementById(String.fromCharCode(randomchar) + randomnum).innerHTML=crate;
+                    document.getElementById(String.fromCharCode(randomchar) + randomnum).style.backgroundColor = "#855E42";
                 }
             }
         }
