@@ -37,36 +37,39 @@
 
         var userPos = "b2";
 
-        function moveUp(){
+        function moveUp() {
             let currentPos = userPos;
             let letter = currentPos.charAt(0);
             let num = currentPos.substring(1, currentPos.length);
             num -= 1;
             if (document.getElementById(newPos).class === "obstacle") {
                 alert("YO SHITS FUCKED")
-            }
-            else if (num < 1 && num > 10){
+            } else if (num < 1 && num > 10) {
                 alert("YO SHITS FUCKED")
-            }
-            else{
+            } else {
                 userPos = newPos;
             }
             alert(letter + num)
         }
-        function moveLeft(){
 
-        }
-        function moveDown(){
+        function moveLeft() {
             let currentPos = userPos;
             let letter = currentPos.charAt(0);
-            let number = parseInt(currentPos.substring(1,currentPos.length)) + 1;
+            let num = currentPos.substring(1, currentPos.length);
+        }
+
+        function moveDown() {
+            let currentPos = userPos;
+            let letter = currentPos.charAt(0);
+            let number = parseInt(currentPos.substring(1, currentPos.length)) + 1;
             let newPos = letter + number.toString();
             if (document.getElementById(newPos).class === "obstacle") {
                 newPos = userPos;
             }
             return newPos
         }
-        function moveRight(){
+
+        function moveRight() {
             userPos.charCodeAt(0) + 1;
             return userPos
         }
@@ -74,7 +77,7 @@
         function keyDownTextField(e) {
             var keyCode = e.keyCode;
             keyCode = String.fromCharCode(keyCode);
-            switch(keyCode) {
+            switch (keyCode) {
                 case 'W':
                     moveUp();
                     break;
