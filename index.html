@@ -64,15 +64,22 @@
             let letter = currentPos.charAt(0);
             let number = parseInt(currentPos.substring(1, currentPos.length)) + 1;
             let newPos = letter + number.toString();
-            if (document.getElementById(newPos).class === "obstacle") {
+            if (document.getElementById(newPos).className === "obstacle") {
                 newPos = userPos;
             }
             return newPos
         }
 
         function moveRight() {
-            userPos.charCodeAt(0) + 1;
-            return userPos
+            let currentPos =  userPos;
+            let letter = (currentPos.charCodeAt(0) + 1);
+            let newLetter  = String.fromCharCode(letter);
+            let number = currentPos.substring(1, currentPos.length);
+            let newPos = newLetter + number;
+            if (document.getElementById(newPos).className === "obstacle") {
+                newPos = userPos;
+            }
+            return newPos
         }
 
         function keyDownTextField(e) {
