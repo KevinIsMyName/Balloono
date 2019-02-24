@@ -41,10 +41,18 @@
 
         }
         function moveDown(){
-
+            let currentPos = userPos;
+            let letter = currentPos.charAt(0);
+            let number = parseInt(currentPos.substring(1,currentPos.length)) + 1;
+            let newPos = letter + number.toString();
+            if (document.getElementById(newPos).class === "obstacle") {
+                newPos = userPos;
+            }
+            return newPos
         }
         function moveRight(){
-
+            userPos.charCodeAt(0) + 1;
+            return userPos
         }
 
         function keyDownTextField(e) {
