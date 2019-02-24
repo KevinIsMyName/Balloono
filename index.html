@@ -13,6 +13,7 @@
             align-content: center;
             margin: 0 auto;
         }
+
         h1 {
             text-align: center;
             align-content: center;
@@ -23,6 +24,7 @@
             height: 66px;
             width: 66px;
         }
+
         img {
             width: 90%;
         }
@@ -49,6 +51,9 @@
 
         document.addEventListener("keydown", keyDownTextField);
         var userPos = "b2";
+        var memeURLs = ["bigfoot.jpg", "EAbanter.jpg", "funkytown.jpg", "handle.jpg", "hat.jpg", "lionkingmeme.jpg",
+            "marriage.jpg", "minecraft.jpg", "patrick.jpg", "pika.jpg", "rare.jpg", "revolutions.jpg",
+            "skypespotsteam.jpg", "spiderman.png", "thanos.jpg"];
 
         function updateBoardMove(oldPos, newPos) {
             document.getElementById(oldPos).innerHTML = "";
@@ -133,6 +138,7 @@
             let checkPos = [];
             let num = parseInt(userPos.substring(1, userPos.length));
             let letter = userPos.charAt(0);
+            let rand;
 
             //Calculating left, up right, down grids
             let posRight = letter.charCodeAt(0) + 1;
@@ -150,6 +156,11 @@
             } else if (document.getElementById(posRight).className === "box") {
                 setTimeout(function () {
                     document.getElementById(posRight).className = "grass";
+                    rand = parseInt(Math.random() * 100);
+                    if (rand < 15) {
+                        alert("You found a meme!");
+                        window.open("./memes/" + memeURLs[rand], '_blank"');
+                    }
                 }, 3500);
             } else {
                 setTimeout(function () {
@@ -167,6 +178,11 @@
             } else if (document.getElementById(posUp).className === "box") {
                 setTimeout(function () {
                     document.getElementById(posUp).className = "grass";
+                    rand = parseInt(Math.random() * 100);
+                    if (rand < 15) {
+                        alert("You found a meme!");
+                        window.open("./memes/" + memeURLs[rand], '_blank"');
+                    }
                 }, 3500);
             } else {
                 setTimeout(function () {
@@ -184,6 +200,11 @@
             } else if (document.getElementById(posLeft).className === "box") {
                 setTimeout(function () {
                     document.getElementById(posLeft).className = "grass";
+                    rand = parseInt(Math.random() * 100);
+                    if (rand < 15) {
+                        alert("You found a meme!");
+                        window.open("./memes/" + memeURLs[rand], '_blank"');
+                    }
                 }, 3500);
             } else {
                 setTimeout(function () {
@@ -201,6 +222,11 @@
             } else if (document.getElementById(posDown).className === "box") {
                 setTimeout(function () {
                     document.getElementById(posDown).className = "grass";
+                    rand = parseInt(Math.random() * 100);
+                    if (rand < 15) {
+                        alert("You found a meme!");
+                        window.open("./memes/" + memeURLs[rand], '_blank"');
+                    }
                 }, 3500);
             } else {
                 setTimeout(function () {
@@ -262,6 +288,8 @@
 
         function checkDeath() {
             if (document.getElementById(userPos).style.backgroundColor === "skyblue") {
+                window.open("catcry.png", "_blank");
+                alert("Harambe died!");
                 location.reload();
             }
         }
@@ -331,7 +359,7 @@
 
         </td>
         <td id="b2" class="spawn">
-            <img src="harambe.jpg" alt="description here" />
+            <img src="harambe.jpg" alt="description here"/>
         </td>
         <td id="c2" class="spawn">
 
