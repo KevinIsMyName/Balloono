@@ -103,24 +103,21 @@
             let minchar=98;
             let maxnum=10;
             let minnum=2;
-            for ( y=0;y<3;y++) {
+            for ( i=0;i<70;i++) {
                 let randomchar = Math.floor(Math.random() * (maxchar - minchar + 1) + minchar);
                 let randomnum = Math.floor(Math.random() * (maxnum - minnum + 1) + minnum);
                 let randomchar2 = Math.floor(Math.random() * (maxchar - minchar + 1) + minchar);
                 let randomnum2 = Math.floor(Math.random() * (maxnum - minnum + 1) + minnum);
                 randomnum = randomnum.toString();
-                for (i=minchar;i<maxchar;i++) {
-                    for (x = 2; x < 9; x++) {
-                        if ((document.getElementById(randomchar.fromCharCode(i) + randomnum).className) !== (document.getElementById(String.fromCharCode(i)+x.toString()).className)) {
+                randomnum2 = randomnum2.toString();
+                        if ((document.getElementById(String.fromCharCode(randomchar) + randomnum).className) !== (document.getElementById(String.fromCharCode(randomchar2) + randomnum2).className)) {
                             continue;
                         }
                         else {
-                            document.getElementById(randomchar.fromCharCode(i) + randomnum).innerHTML=crate;
+                            document.getElementById(String.fromCharCode(randomchar) + randomnum).innerHTML=crate;
                         }
                     }
                 }
-            }
-        }
     </script>
 </head>
 <body onload="randomizemap()">
