@@ -120,7 +120,32 @@
                 document.getElementById(userPos).style.backgroundColor = "darkgreen";
             }, 3500);
         }
-
+        function randomizemap() {
+            let maxchar=112;
+            let minchar=98;
+            let maxnum=10;
+            let minnum=2;
+            for ( i=0;i<70;i++) {
+                let randomchar = Math.floor(Math.random() * (maxchar - minchar + 1) + minchar);
+                let randomnum = Math.floor(Math.random() * (maxnum - minnum + 1) + minnum);
+                let randomchar2 = Math.floor(Math.random() * (maxchar - minchar + 1) + minchar);
+                let randomnum2 = Math.floor(Math.random() * (maxnum - minnum + 1) + minnum);
+                randomnum = randomnum.toString();
+                randomnum2 = randomnum2.toString();
+                if(((document.getElementById(String.fromCharCode(randomchar) + randomnum).className) === "obstacle" )){
+                    continue;
+                }
+                else if ((((document.getElementById(String.fromCharCode(randomchar) + randomnum).className) === "spawn" ))) {
+                    continue;
+                }
+                else if ((document.getElementById(String.fromCharCode(randomchar) + randomnum).className) !== (document.getElementById(String.fromCharCode(randomchar2) + randomnum2).className)) {
+                    continue;
+                }
+                else {
+                    document.getElementById(String.fromCharCode(randomchar) + randomnum).innerHTML=crate;
+                }
+            }
+        }
         function keyDownTextField(e) {
             var keyCode = e.keyCode;
             keyCode = String.fromCharCode(keyCode);
@@ -142,32 +167,7 @@
                     break;
             }
         }
-        function randomizemap() {
-            let maxchar=112;
-            let minchar=98;
-            let maxnum=10;
-            let minnum=2;
-            for ( i=0;i<70;i++) {
-                let randomchar = Math.floor(Math.random() * (maxchar - minchar + 1) + minchar);
-                let randomnum = Math.floor(Math.random() * (maxnum - minnum + 1) + minnum);
-                let randomchar2 = Math.floor(Math.random() * (maxchar - minchar + 1) + minchar);
-                let randomnum2 = Math.floor(Math.random() * (maxnum - minnum + 1) + minnum);
-                randomnum = randomnum.toString();
-                randomnum2 = randomnum2.toString();
-                        if(((document.getElementById(String.fromCharCode(randomchar) + randomnum).className) === "obstacle" )){
-                            continue;
-                        }
-                        else if ((((document.getElementById(String.fromCharCode(randomchar) + randomnum).className) === "spawn" ))) {
-                            continue;
-                        }
-                        else if ((document.getElementById(String.fromCharCode(randomchar) + randomnum).className) !== (document.getElementById(String.fromCharCode(randomchar2) + randomnum2).className)) {
-                            continue;
-                        }
-                        else {
-                            document.getElementById(String.fromCharCode(randomchar) + randomnum).innerHTML=crate;
-                        }
-                    }
-                }
+
     </script>
 </head>
 <body onload="randomizemap()">
