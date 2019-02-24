@@ -115,16 +115,16 @@
                 document.getElementById(userPos).style.backgroundColor = "darkgreen";
             }, 3500);
         }
-        function randomizemap() {
-            let maxchar=112;
-            let minchar=98;
-            let maxnum=10;
-            let minnum=2;
+        function randomizeMap() {
+            let maxChar=112;
+            let minChar=98;
+            let maxNum=10;
+            let minNum=2;
             for ( i=0;i<70;i++) {
-                let randomchar = Math.floor(Math.random() * (maxchar - minchar + 1) + minchar);
-                let randomnum = Math.floor(Math.random() * (maxnum - minnum + 1) + minnum);
-                let randomchar2 = Math.floor(Math.random() * (maxchar - minchar + 1) + minchar);
-                let randomnum2 = Math.floor(Math.random() * (maxnum - minnum + 1) + minnum);
+                let randomchar = Math.floor(Math.random() * (maxChar - minChar + 1) + minChar);
+                let randomnum = Math.floor(Math.random() * (maxNum - minNum + 1) + minNum);
+                let randomchar2 = Math.floor(Math.random() * (maxChar - minChar + 1) + minChar);
+                let randomnum2 = Math.floor(Math.random() * (maxNum - minNum + 1) + minNum);
                 randomnum = randomnum.toString();
                 randomnum2 = randomnum2.toString();
                 if(((document.getElementById(String.fromCharCode(randomchar) + randomnum).className) === "obstacle" )){
@@ -166,7 +166,7 @@
 
     </script>
 </head>
-<body onload="randomizemap()">
+<body onload="randomizeMap()">
 <!--Fixed Table Test-->
 <table>
     <tr> <!-- Row 1 -->
