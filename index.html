@@ -37,9 +37,11 @@
         }
     </style>
     <script>
+
         document.addEventListener("keydown", keyDownTextField);
 
         var userPos = "b2";
+        var crate = "Bombs Away";
 
         function moveUp() {
             let currentPos = userPos;
@@ -94,10 +96,29 @@
                 case 'D':
                     moveRight();
                     break;
-
-        function randomizemap() {
-
+            }
         }
+        function randomizemap() {
+            let maxchar=112;
+            let minchar=98;
+            let maxnum=10;
+            let minnum=2;
+            for ( y=0;y<3;y++) {
+                let randomchar = Math.floor(Math.random() * (maxchar - minchar + 1) + minchar);
+                let randomnum = Math.floor(Math.random() * (maxnum - minnum + 1) + minnum);
+                let randomchar2 = Math.floor(Math.random() * (maxchar - minchar + 1) + minchar);
+                let randomnum2 = Math.floor(Math.random() * (maxnum - minnum + 1) + minnum);
+                randomnum = randomnum.toString();
+                for (i=minchar;i<maxchar;i++) {
+                    for (x = 2; x < 9; x++) {
+                        if ((document.getElementById(randomchar.fromCharCode(i) + randomnum).className) !== (document.getElementById(String.fromCharCode(i)+x.toString()).className)) {
+                            continue;
+                        }
+                        else {
+                            document.getElementById(randomchar.fromCharCode(i) + randomnum).innerHTML=crate;
+                        }
+                    }
+                }
             }
         }
     </script>
