@@ -49,6 +49,8 @@
             let newPos = letter + num.toString();
             if (document.getElementById(newPos).className === "obstacle") {
                 alert("You moved into an obstacle");
+            } else if (document.getElementById(newPos).className === "box") {
+                alert("You moved into a box");
             } else if (num < 1 && num > 10) {
                 alert("You went off the board");
             } else {
@@ -68,6 +70,8 @@
             let newPos = letter + num;
             if (document.getElementById(newPos).className === "obstacle") {
                 alert("You moved into an obstacle");
+            } else if (document.getElementById(newPos).className === "box") {
+                alert("You moved into a box");
             } else if (letter >= 65 && letter <= 81) {
                 alert("You went off board");
             } else {
@@ -85,6 +89,8 @@
             let newPos = letter + number.toString();
             if (document.getElementById(newPos).className === "obstacle") {
                 alert("You moved into an obstacle");
+            } else if (document.getElementById(newPos).className === "box") {
+                alert("You moved into a box");
             } else if (number < 1 && number > 10) {
                 alert("You went off the board");
             } else {
@@ -103,6 +109,8 @@
             let newPos = newLetter + number;
             if (document.getElementById(newPos).className === "obstacle") {
                 alert("You moved into an obstacle");
+            } else if (document.getElementById(newPos).className === "box") {
+                alert("You moved into a box");
             } else if (letter >= 65 && letter <= 81) {
                 alert("You went off board");
             } else {
