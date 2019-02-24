@@ -29,10 +29,19 @@
 
         function keyDownTextField(e) {
             var keyCode = e.keyCode;
-            if(keyCode===87) {
-                alert("You hit the enter key.");
-            } else {
-                alert("Oh no you didn't.");
+            switch(keyCode) {
+                case 87:
+                    alert("You hit the w key.");
+                    break;
+                case 65:
+                    alert("u pressed a");
+                    break;
+                case 83:
+                    alert("u pressed s");
+                    break;
+                case 68:
+                    alert("u pressed d");
+                    break;
             }
         }
     </script>
