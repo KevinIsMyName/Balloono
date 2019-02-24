@@ -156,10 +156,13 @@
             } else if (document.getElementById(posRight).className === "box") {
                 setTimeout(function () {
                     document.getElementById(posRight).className = "grass";
-                    rand = parseInt(Math.random() * 100);
+                    rand = parseInt(Math.random() * 15);
                     if (rand < 15) {
-                        alert("You found a meme!");
+                        document.getElementById("message").innerHTML = "You found a meme!";
                         window.open("./memes/" + memeURLs[rand], '_blank"');
+                        setTimeout(function() {
+                            document.getElementById("message").innerHTML = "The Search for the Meming of Life";
+                        }, 2000);
                     }
                 }, 3500);
             } else {
@@ -180,8 +183,11 @@
                     document.getElementById(posUp).className = "grass";
                     rand = parseInt(Math.random() * 100);
                     if (rand < 15) {
-                        alert("You found a meme!");
+                        document.getElementById("message").innerHTML = "You found a meme!";
                         window.open("./memes/" + memeURLs[rand], '_blank"');
+                        setTimeout(function() {
+                            document.getElementById("message").innerHTML = "The Search for the Meming of Life";
+                        }, 2000);
                     }
                 }, 3500);
             } else {
@@ -202,8 +208,11 @@
                     document.getElementById(posLeft).className = "grass";
                     rand = parseInt(Math.random() * 100);
                     if (rand < 15) {
-                        alert("You found a meme!");
+                        document.getElementById("message").innerHTML = "You found a meme!";
                         window.open("./memes/" + memeURLs[rand], '_blank"');
+                        setTimeout(function() {
+                            document.getElementById("message").innerHTML = "The Search for the Meming of Life";
+                        }, 2000);
                     }
                 }, 3500);
             } else {
@@ -224,8 +233,11 @@
                     document.getElementById(posDown).className = "grass";
                     rand = parseInt(Math.random() * 100);
                     if (rand < 15) {
-                        alert("You found a meme!");
+                        document.getElementById("message").innerHTML = "You found a meme!";
                         window.open("./memes/" + memeURLs[rand], '_blank"');
+                        setTimeout(function() {
+                            document.getElementById("message").innerHTML = "The Search for the Meming of Life";
+                        }, 2000);
                     }
                 }, 3500);
             } else {
@@ -298,7 +310,7 @@
     </script>
 </head>
 <body onload="randomizeMap()">
-<h1>The Search for the Meming of Life</h1>
+<h1 id="message">The Search for the Meming of Life</h1>
 <!--Fixed Table Test-->
 <table>
     <tr> <!-- Row 1 -->
