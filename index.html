@@ -111,14 +111,11 @@
             }
         }
 
-        function boxBroken() {
-
-        }
-
         function placeBomb(userPos) {
             document.getElementById(userPos).style.backgroundColor = "darkblue";
             setTimeout(function () {
                 document.getElementById(userPos).style.backgroundColor = "skyblue";
+                checkDeath();
             }, 3000);
             setTimeout(function () {
                 document.getElementById(userPos).style.backgroundColor = "darkgreen";
@@ -148,6 +145,8 @@
             } else {
                 setTimeout(function () {
                     document.getElementById(posRight).style.backgroundColor = "skyblue";
+                    checkDeath();
+
                 }, 3000);
                 setTimeout(function () {
                     document.getElementById(posRight).style.backgroundColor = "darkgreen";
@@ -163,6 +162,8 @@
             } else {
                 setTimeout(function () {
                     document.getElementById(posUp).style.backgroundColor = "skyblue";
+                    checkDeath();
+
                 }, 3000);
                 setTimeout(function () {
                     document.getElementById(posUp).style.backgroundColor = "darkgreen";
@@ -178,6 +179,8 @@
             } else {
                 setTimeout(function () {
                     document.getElementById(posLeft).style.backgroundColor = "skyblue";
+                    checkDeath();
+
                 }, 3000);
                 setTimeout(function () {
                     document.getElementById(posLeft).style.backgroundColor = "darkgreen";
@@ -193,6 +196,8 @@
             } else {
                 setTimeout(function () {
                     document.getElementById(posDown).style.backgroundColor = "skyblue";
+                    checkDeath();
+
                 }, 3000);
                 setTimeout(function () {
                     document.getElementById(posDown).style.backgroundColor = "darkgreen";
@@ -247,6 +252,11 @@
                 case ' ':
                     placeBomb(userPos);
                     break;
+            }
+        }
+        function checkDeath() {
+            if (document.getElementById(userPos).style.backgroundColor === "skyblue") {
+                location.reload();
             }
         }
 
