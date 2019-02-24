@@ -31,7 +31,9 @@
         .spawn {
             background-color: darkgreen;
         }
+        .box{
 
+        }
 
     </style>
     <script>
@@ -136,6 +138,7 @@
                 }
                 else {
                     document.getElementById(String.fromCharCode(randomchar) + randomnum).style.backgroundColor = "#855E42";
+                    document.getElementById(String.fromCharCode(randomchar) + randomnum).className = "box";
                 }
             }
         }
