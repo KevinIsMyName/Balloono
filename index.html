@@ -110,7 +110,13 @@
                 let randomnum2 = Math.floor(Math.random() * (maxnum - minnum + 1) + minnum);
                 randomnum = randomnum.toString();
                 randomnum2 = randomnum2.toString();
-                        if ((document.getElementById(String.fromCharCode(randomchar) + randomnum).className) !== (document.getElementById(String.fromCharCode(randomchar2) + randomnum2).className)) {
+                        if(((document.getElementById(String.fromCharCode(randomchar) + randomnum).className) === "obstacle" )){
+                            continue;
+                        }
+                        else if ((((document.getElementById(String.fromCharCode(randomchar) + randomnum).className) === "spawn" ))) {
+                            continue;
+                        }
+                        else if ((document.getElementById(String.fromCharCode(randomchar) + randomnum).className) !== (document.getElementById(String.fromCharCode(randomchar2) + randomnum2).className)) {
                             continue;
                         }
                         else {
