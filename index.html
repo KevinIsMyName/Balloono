@@ -55,6 +55,7 @@
             let newPos = letter + num.toString();
             if (document.getElementById(newPos).className === "obstacle") {
             } else if (document.getElementById(newPos).className === "box") {
+            } else if (document.getElementById(newPos).style.backgroundColor === "darkblue") {
             } else if (num < 1 && num > 10) {
             } else {
                 userPos = newPos;
@@ -71,6 +72,7 @@
             let newPos = letter + num;
             if (document.getElementById(newPos).className === "obstacle") {
             } else if (document.getElementById(newPos).className === "box") {
+            } else if (document.getElementById(newPos).style.backgroundColor === "darkblue") {
             } else if (letter >= 65 && letter <= 81) {
             } else {
                 userPos = newPos;
@@ -85,6 +87,7 @@
             let newPos = letter + number.toString();
             if (document.getElementById(newPos).className === "obstacle") {
             } else if (document.getElementById(newPos).className === "box") {
+            } else if (document.getElementById(newPos).style.backgroundColor === "darkblue") {
             } else if (number < 1 && number > 10) {
             } else {
                 userPos = newPos;
@@ -100,6 +103,7 @@
             let newPos = newLetter + number;
             if (document.getElementById(newPos).className === "obstacle") {
             } else if (document.getElementById(newPos).className === "box") {
+            } else if (document.getElementById(newPos).style.backgroundColor === "darkblue") {
             } else if (letter >= 65 && letter <= 81) {
             } else {
                 userPos = newPos;
@@ -131,6 +135,8 @@
             posLeft = String.fromCharCode(posLeft) + num.toString();
             let posUp = letter + (num - 1).toString();
             let posDown = letter + (num + 1).toString();
+            checkPos.push(posRight, posUp, posLeft, posDown);
+
 
             //splash right
             if (document.getElementById(posRight).className === "obstacle") {
@@ -191,6 +197,10 @@
                 setTimeout(function () {
                     document.getElementById(posDown).style.backgroundColor = "darkgreen";
                 }, 3500);
+            }
+
+            if (document.getElementById(userPos).style.backgroundColor === "skyblue") {
+
             }
         }
 
