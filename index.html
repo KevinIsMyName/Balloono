@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Tab name</title>
     <style>
+        html {
+            background-image: url("qbkls.png")
+        }
+
         table {
             text-align: center;
             align-content: center;
@@ -17,15 +21,15 @@
         }
 
         .obstacle {
-            background-color: gray;
+            background-color: slategray;
         }
 
-        .box {
-            background-color: saddlebrown;
+        .grass {
+            background-color: darkgreen;
         }
 
         .spawn {
-            background-color: saddlebrown;
+            background-color: darkgreen;
         }
 
         .user {
@@ -39,29 +43,43 @@
     <script>
 
         document.addEventListener("keydown", keyDownTextField);
-
         var userPos = "b2";
         var crate = "Bombs Away";
+
+        function updateBoardMove(oldPos, newPos) {
+            document.getElementById(oldPos).innerHTML = "";
+            document.getElementById(newPos).innerHTML = "&#9820;";
+        }
 
         function moveUp() {
             let currentPos = userPos;
             let letter = currentPos.charAt(0);
-            let num = currentPos.substring(1, currentPos.length);
+            let num = parseInt(currentPos.substring(1, currentPos.length));
             num -= 1;
-            if (document.getElementById(newPos).class === "obstacle") {
-                alert("YO SHITS FUCKED")
+            let newPos = letter + num.toString();
+            if (document.getElementById(newPos).className === "obstacle") {
+            } else if (document.getElementById(newPos).className === "box") {
             } else if (num < 1 && num > 10) {
-                alert("YO SHITS FUCKED")
             } else {
                 userPos = newPos;
+                updateBoardMove(currentPos, userPos);
             }
-            alert(letter + num)
         }
 
         function moveLeft() {
             let currentPos = userPos;
             let letter = currentPos.charAt(0);
             let num = currentPos.substring(1, currentPos.length);
+            let letterValue = letter.charCodeAt(0) - 1;
+            letter = String.fromCharCode(letterValue);
+            let newPos = letter + num;
+            if (document.getElementById(newPos).className === "obstacle") {
+            } else if (document.getElementById(newPos).className === "box") {
+            } else if (letter >= 65 && letter <= 81) {
+            } else {
+                userPos = newPos;
+                updateBoardMove(currentPos, userPos);
+            }
         }
 
         function moveDown() {
@@ -69,15 +87,38 @@
             let letter = currentPos.charAt(0);
             let number = parseInt(currentPos.substring(1, currentPos.length)) + 1;
             let newPos = letter + number.toString();
-            if (document.getElementById(newPos).class === "obstacle") {
-                newPos = userPos;
+            if (document.getElementById(newPos).className === "obstacle") {
+            } else if (document.getElementById(newPos).className === "box") {
+            } else if (number < 1 && number > 10) {
+            } else {
+                userPos = newPos;
+                updateBoardMove(currentPos, userPos);
             }
-            return newPos
         }
 
         function moveRight() {
-            userPos.charCodeAt(0) + 1;
-            return userPos
+            let currentPos = userPos;
+            let letter = (currentPos.charCodeAt(0) + 1);
+            let newLetter = String.fromCharCode(letter);
+            let number = currentPos.substring(1, currentPos.length);
+            let newPos = newLetter + number;
+            if (document.getElementById(newPos).className === "obstacle") {
+            } else if (document.getElementById(newPos).className === "box") {
+            } else if (letter >= 65 && letter <= 81) {
+            } else {
+                userPos = newPos;
+                updateBoardMove(currentPos, userPos);
+            }
+        }
+
+        function placeBomb(userPos) {
+            document.getElementById(userPos).style.backgroundColor = "darkblue";
+            setTimeout(function () {
+                document.getElementById(userPos).style.backgroundColor = "skyblue";
+            }, 3000);
+            setTimeout(function () {
+                document.getElementById(userPos).style.backgroundColor = "darkgreen";
+            }, 3500);
         }
 
         function keyDownTextField(e) {
@@ -95,6 +136,9 @@
                     break;
                 case 'D':
                     moveRight();
+                    break;
+                case ' ':
+                    placeBomb(userPos);
                     break;
             }
         }
@@ -131,484 +175,484 @@
 <table>
     <tr> <!-- Row 1 -->
         <td id="a1" class="obstacle">
-            obstacle
+
         </td>
         <td id="b1" class="obstacle">
-            obstacle
+
         </td>
         <td id="c1" class="obstacle">
-            obstacle
+
         </td>
         <td id="d1" class="obstacle">
-            obstacle
+
         </td>
         <td id="e1" class="obstacle">
-            obstacle
+
         </td>
         <td id="f1" class="obstacle">
-            obstacle
+
         </td>
         <td id="g1" class="obstacle">
-            obstacle
+
         </td>
         <td id="h1" class="obstacle">
-            obstacle
+
         </td>
         <td id="i1" class="obstacle">
-            obstacle
+
         </td>
         <td id="j1" class="obstacle">
-            obstacle
+
         </td>
         <td id="k1" class="obstacle">
-            obstacle
+
         </td>
         <td id="l1" class="obstacle">
-            obstacle
+
         </td>
         <td id="m1" class="obstacle">
-            obstacle
+
         </td>
         <td id="n1" class="obstacle">
-            obstacle
+
         </td>
         <td id="o1" class="obstacle">
-            obstacle
+
         </td>
         <td id="p1" class="obstacle">
-            obstacle
+
         </td>
         <td id="q1" class="obstacle">
-            obstacle
+
         </td>
     </tr>
     <tr> <!-- Row 2 -->
         <td id="a2" class="obstacle">
-            obstacle
+
         </td>
         <td id="b2" class="spawn">
-            Spawn
+            &#9820;
         </td>
         <td id="c2" class="spawn">
-            Spawn
+
         </td>
-        <td id="d2" class="box">
-            cell
+        <td id="d2" class="grass">
+
         </td>
-        <td id="e2" class="box">
-            cell
+        <td id="e2" class="grass">
+
         </td>
-        <td id="f2" class="box">
-            cell
+        <td id="f2" class="grass">
+
         </td>
-        <td id="g2" class="box">
-            cell
+        <td id="g2" class="grass">
+
         </td>
-        <td id="h2" class="box">
-            cell
+        <td id="h2" class="grass">
+
         </td>
-        <td id="i2" class="box">
-            cell
+        <td id="i2" class="grass">
+
         </td>
-        <td id="j2" class="box">
-            cell
+        <td id="j2" class="grass">
+
         </td>
-        <td id="k2" class="box">
-            cell
+        <td id="k2" class="grass">
+
         </td>
-        <td id="l2" class="box">
-            cell
+        <td id="l2" class="grass">
+
         </td>
-        <td id="m2" class="box">
-            cell
+        <td id="m2" class="grass">
+
         </td>
-        <td id="n2" class="box">
-            cell
+        <td id="n2" class="grass">
+
         </td>
         <td id="o2" class="spawn">
-            Spawn
+
         </td>
         <td id="p2" class="spawn">
-            Spawn
+
         </td>
         <td id="q2" class="obstacle">
-            obstacle
+
         </td>
     </tr>
     <tr> <!-- Row 3 -->
         <td id="a3" class="obstacle">
-            obstacle
+
         </td>
         <td id="b3" class="spawn">
-            Spawn
+
         </td>
         <td id="c3" class="obstacle">
-            obstacle
+
         </td>
-        <td id="d3" class="box">
-            cell
+        <td id="d3" class="grass">
+
         </td>
         <td id="e3" class="obstacle">
-            obstacle
+
         </td>
-        <td id="f3" class="box">
-            cell
+        <td id="f3" class="grass">
+
         </td>
         <td id="g3" class="obstacle">
-            obstacle
+
         </td>
-        <td id="h3" class="box">
-            cell
+        <td id="h3" class="grass">
+
         </td>
         <td id="i3" class="obstacle">
-            obstacle
+
         </td>
-        <td id="j3" class="box">
-            cell
+        <td id="j3" class="grass">
+
         </td>
         <td id="k3" class="obstacle">
-            obstacle
+
         </td>
-        <td id="l3" class="box">
-            cell
+        <td id="l3" class="grass">
+
         </td>
         <td id="m3" class="obstacle">
-            obstacle
+
         </td>
-        <td id="n3" class="box">
-            cell
+        <td id="n3" class="grass">
+
         </td>
         <td id="o3" class="obstacle">
-            obstacle
+
         </td>
         <td id="p3" class="spawn">
             Spawn
         </td>
         <td id="q3" class="obstacle">
-            obstacle
+
         </td>
     </tr>
     <tr> <!-- Row 4 -->
         <td id="a4" class="obstacle">
-            obstacle
+
         </td>
-        <td id="b4" class="box">
-            cell
+        <td id="b4" class="grass">
+
         </td>
-        <td id="c4" class="box">
-            cell
+        <td id="c4" class="grass">
+
         </td>
-        <td id="d4" class="box">
-            cell
+        <td id="d4" class="grass">
+
         </td>
-        <td id="e4" class="box">
-            cell
+        <td id="e4" class="grass">
+
         </td>
-        <td id="f4" class="box">
-            cell
+        <td id="f4" class="grass">
+
         </td>
-        <td id="g4" class="box">
-            cell
+        <td id="g4" class="grass">
+
         </td>
-        <td id="h4" class="box">
-            cell
+        <td id="h4" class="grass">
+
         </td>
-        <td id="i4" class="box">
-            cell
+        <td id="i4" class="grass">
+
         </td>
-        <td id="j4" class="box">
-            cell
+        <td id="j4" class="grass">
+
         </td>
-        <td id="k4" class="box">
-            cell
+        <td id="k4" class="grass">
+
         </td>
-        <td id="l4" class="box">
-            cell
+        <td id="l4" class="grass">
+
         </td>
-        <td id="m4" class="box">
-            cell
+        <td id="m4" class="grass">
+
         </td>
-        <td id="n4" class="box">
-            cell
+        <td id="n4" class="grass">
+
         </td>
-        <td id="o4" class="box">
-            cell
+        <td id="o4" class="grass">
+
         </td>
-        <td id="p4" class="box">
-            cell
+        <td id="p4" class="grass">
+
         </td>
         <td id="q4" class="obstacle">
-            obstacle
+
         </td>
     </tr>
     <tr> <!-- Row 5 -->
         <td id="a5" class="obstacle">
-            obstacle
+
         </td>
-        <td id="b5" class="box">
-            cell
+        <td id="b5" class="grass">
+
         </td>
         <td id="c5" class="obstacle">
-            obstacle
+
         </td>
-        <td id="d5" class="box">
-            cell
+        <td id="d5" class="grass">
+
         </td>
         <td id="e5" class="obstacle">
-            obstacle
+
         </td>
-        <td id="f5" class="box">
-            cell
+        <td id="f5" class="grass">
+
         </td>
         <td id="g5" class="obstacle">
-            obstacle
+
         </td>
-        <td id="h5" class="box">
-            cell
+        <td id="h5" class="grass">
+
         </td>
         <td id="i5" class="obstacle">
-            obstacle
+
         </td>
-        <td id="j5" class="box">
-            cell
+        <td id="j5" class="grass">
+
         </td>
         <td id="k5" class="obstacle">
-            obstacle
+
         </td>
-        <td id="l5" class="box">
-            cell
+        <td id="l5" class="grass">
+
         </td>
         <td id="m5" class="obstacle">
-            obstacle
+
         </td>
-        <td id="n5" class="box">
-            cell
+        <td id="n5" class="grass">
+
         </td>
         <td id="o5" class="obstacle">
-            obstacle
+
         </td>
-        <td id="p5" class="box">
-            cell
+        <td id="p5" class="grass">
+
         </td>
         <td id="q5" class="obstacle">
-            obstacle
+
         </td>
     </tr>
     <tr> <!-- Row 6 -->
         <td id="a6" class="obstacle">
-            obstacle
+
         </td>
-        <td id="b6" class="box">
-            cell
+        <td id="b6" class="grass">
+
         </td>
-        <td id="c6" class="box">
-            box
+        <td id="c6" class="grass">
+
         </td>
-        <td id="d6" class="box">
-            cell
+        <td id="d6" class="grass">
+
         </td>
-        <td id="e6" class="box">
-            box
+        <td id="e6" class="grass">
+
         </td>
-        <td id="f6" class="box">
-            cell
+        <td id="f6" class="grass">
+
         </td>
-        <td id="g6" class="box">
-            box
+        <td id="g6" class="grass">
+
         </td>
-        <td id="h6" class="box">
-            cell
+        <td id="h6" class="grass">
+
         </td>
-        <td id="i6" class="box">
-            box
+        <td id="i6" class="grass">
+
         </td>
-        <td id="j6" class="box">
-            cell
+        <td id="j6" class="grass">
+
         </td>
-        <td id="k6" class="box">
-            box
+        <td id="k6" class="grass">
+
         </td>
-        <td id="l6" class="box">
-            cell
+        <td id="l6" class="grass">
+
         </td>
-        <td id="m6" class="box">
-            box
+        <td id="m6" class="grass">
+
         </td>
-        <td id="n6" class="box">
-            cell
+        <td id="n6" class="grass">
+
         </td>
-        <td id="o6" class="box">
-            box
+        <td id="o6" class="grass">
+
         </td>
-        <td id="p6" class="box">
-            cell
+        <td id="p6" class="grass">
+
         </td>
         <td id="q6" class="obstacle">
-            obstacle
+
         </td>
     </tr>
     <tr> <!-- Row 7 -->
         <td id="a7" class="obstacle">
-            obstacle
+
         </td>
-        <td id="b7" class="box">
-            cell
+        <td id="b7" class="grass">
+
         </td>
         <td id="c7" class="obstacle">
-            obstacle
+
         </td>
-        <td id="d7" class="box">
-            cell
+        <td id="d7" class="grass">
+
         </td>
         <td id="e7" class="obstacle">
-            obstacle
+
         </td>
-        <td id="f7" class="box">
-            cell
+        <td id="f7" class="grass">
+
         </td>
         <td id="g7" class="obstacle">
-            obstacle
+
         </td>
-        <td id="h7" class="box">
-            cell
+        <td id="h7" class="grass">
+
         </td>
         <td id="i7" class="obstacle">
-            obstacle
+
         </td>
-        <td id="j7" class="box">
-            cell
+        <td id="j7" class="grass">
+
         </td>
         <td id="k7" class="obstacle">
-            obstacle
+
         </td>
-        <td id="l7" class="box">
-            cell
+        <td id="l7" class="grass">
+
         </td>
         <td id="m7" class="obstacle">
-            obstacle
+
         </td>
-        <td id="n7" class="box">
-            cell
+        <td id="n7" class="grass">
+
         </td>
         <td id="o7" class="obstacle">
-            obstacle
+
         </td>
-        <td id="p7" class="box">
-            cell
+        <td id="p7" class="grass">
+
         </td>
         <td id="q7" class="obstacle">
-            obstacle
+
         </td>
     </tr>
     <tr> <!-- Row 8 -->
         <td id="a8" class="obstacle">
-            obstacle
+
         </td>
-        <td id="b8" class="box">
-            cell
+        <td id="b8" class="grass">
+
         </td>
-        <td id="c8" class="box">
-            box
+        <td id="c8" class="grass">
+
         </td>
-        <td id="d8" class="box">
-            cell
+        <td id="d8" class="grass">
+
         </td>
-        <td id="e8" class="box">
-            box
+        <td id="e8" class="grass">
+
         </td>
-        <td id="f8" class="box">
-            cell
+        <td id="f8" class="grass">
+
         </td>
-        <td id="g8" class="box">
-            box
+        <td id="g8" class="grass">
+
         </td>
-        <td id="h8" class="box">
-            cell
+        <td id="h8" class="grass">
+
         </td>
-        <td id="i8" class="box">
-            box
+        <td id="i8" class="grass">
+
         </td>
-        <td id="j8" class="box">
-            cell
+        <td id="j8" class="grass">
+
         </td>
-        <td id="k8" class="box">
-            box
+        <td id="k8" class="grass">
+
         </td>
-        <td id="l8" class="box">
-            cell
+        <td id="l8" class="grass">
+
         </td>
-        <td id="m8" class="box">
-            box
+        <td id="m8" class="grass">
+
         </td>
-        <td id="n8" class="box">
-            cell
+        <td id="n8" class="grass">
+
         </td>
-        <td id="o8" class="box">
-            cell
+        <td id="o8" class="grass">
+
         </td>
-        <td id="p8" class="box">
-            cell
+        <td id="p8" class="grass">
+
         </td>
         <td id="q8" class="obstacle">
-            obstacle
+
         </td>
     </tr>
     <tr> <!-- Row 9 -->
         <td id="a9" class="obstacle">
-            obstacle
+
         </td>
         <td id="b9" class="spawn">
             Spawn
         </td>
         <td id="c9" class="obstacle">
-            obstacle
+
         </td>
-        <td id="d9" class="box">
-            cell
+        <td id="d9" class="grass">
+
         </td>
         <td id="e9" class="obstacle">
-            obstacle
+
         </td>
-        <td id="f9" class="box">
-            cell
+        <td id="f9" class="grass">
+
         </td>
         <td id="g9" class="obstacle">
-            obstacle
+
         </td>
-        <td id="h9" class="box">
-            cell
+        <td id="h9" class="grass">
+
         </td>
         <td id="i9" class="obstacle">
-            obstacle
+
         </td>
-        <td id="j9" class="box">
-            cell
+        <td id="j9" class="grass">
+
         </td>
         <td id="k9" class="obstacle">
-            obstacle
+
         </td>
-        <td id="l9" class="box">
-            cell
+        <td id="l9" class="grass">
+
         </td>
         <td id="m9" class="obstacle">
-            obstacle
+
         </td>
-        <td id="n9" class="box">
-            cell
+        <td id="n9" class="grass">
+
         </td>
         <td id="o9" class="obstacle">
-            obstacle
+
         </td>
         <td id="p9" class="spawn">
             Spawn
         </td>
         <td id="q9" class="obstacle">
-            obstacle
+
         </td>
     </tr>
     <tr> <!-- Row 10 -->
         <td id="a10" class="obstacle">
-            obstacle
+
         </td>
         <td id="b10" class="spawn">
             Spawn
@@ -616,38 +660,38 @@
         <td id="c10" class="spawn">
             Spawn
         </td>
-        <td id="d10" class="box">
-            cell
+        <td id="d10" class="grass">
+
         </td>
-        <td id="e10" class="box">
-            cell
+        <td id="e10" class="grass">
+
         </td>
-        <td id="f10" class="box">
-            cell
+        <td id="f10" class="grass">
+
         </td>
-        <td id="g10" class="box">
-            cell
+        <td id="g10" class="grass">
+
         </td>
-        <td id="h10" class="box">
-            cell
+        <td id="h10" class="grass">
+
         </td>
-        <td id="i10" class="box">
-            cell
+        <td id="i10" class="grass">
+
         </td>
-        <td id="j10" class="box">
-            cell
+        <td id="j10" class="grass">
+
         </td>
-        <td id="k10" class="box">
-            cell
+        <td id="k10" class="grass">
+
         </td>
-        <td id="l10" class="box">
-            cell
+        <td id="l10" class="grass">
+
         </td>
-        <td id="m10" class="box">
-            cell
+        <td id="m10" class="grass">
+
         </td>
-        <td id="n10" class="box">
-            cell
+        <td id="n10" class="grass">
+
         </td>
         <td id="o10" class="spawn">
             Spawn
@@ -656,60 +700,60 @@
             Spawn
         </td>
         <td id="q10" class="obstacle">
-            obstacle
+
         </td>
     </tr>
     <tr> <!-- Row 11 -->
         <td id="a11" class="obstacle">
-            obstacle
+
         </td>
         <td id="b11" class="obstacle">
-            obstacle
+
         </td>
         <td id="c11" class="obstacle">
-            obstacle
+
         </td>
         <td id="d11" class="obstacle">
-            obstacle
+
         </td>
         <td id="e11" class="obstacle">
-            obstacle
+
         </td>
         <td id="f11" class="obstacle">
-            obstacle
+
         </td>
         <td id="g11" class="obstacle">
-            obstacle
+
         </td>
         <td id="h11" class="obstacle">
-            obstacle
+
         </td>
         <td id="i11" class="obstacle">
-            obstacle
+
         </td>
         <td id="j11" class="obstacle">
-            obstacle
+
         </td>
         <td id="k11" class="obstacle">
-            obstacle
+
         </td>
         <td id="l11" class="obstacle">
-            obstacle
+
         </td>
         <td id="m11" class="obstacle">
-            obstacle
+
         </td>
         <td id="n11" class="obstacle">
-            obstacle
+
         </td>
         <td id="o11" class="obstacle">
-            obstacle
+
         </td>
         <td id="p11" class="obstacle">
-            obstacle
+
         </td>
         <td id="q11" class="obstacle">
-            obstacle
+
         </td>
     </tr>
 </table>
