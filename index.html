@@ -36,7 +36,7 @@
         document.addEventListener("keydown", keyDownTextField);
         var userPos = "b2";
 
-        function updateBoardMove(oldPos, newPos) {
+        function updateBoard(oldPos, newPos) {
             document.getElementById(oldPos).innerHTML = "";
             document.getElementById(newPos).innerHTML = "&#9820;";
         }
@@ -48,12 +48,16 @@
             num -= 1;
             let newPos = letter + num.toString();
             if (document.getElementById(newPos).className === "obstacle") {
+                alert("You moved into an obstacle");
             } else if (document.getElementById(newPos).className === "box") {
-            } else if (num < 1 && num > 10) { 
+                alert("You moved into a box");
+            } else if (num < 1 && num > 10) { //Unnecessary
+                alert("You went off the board");
             } else {
                 userPos = newPos;
-                updateBoardMove(currentPos, userPos);
+                updateBoard(currentPos, userPos);
             }
+            alert(userPos);
         }
 
         function moveLeft() {
@@ -64,12 +68,16 @@
             letter = String.fromCharCode(letterValue);
             let newPos = letter + num;
             if (document.getElementById(newPos).className === "obstacle") {
+                alert("You moved into an obstacle");
             } else if (document.getElementById(newPos).className === "box") {
-            } else if (letter >= 65 && letter <= 81) { 
+                alert("You moved into a box");
+            } else if (letter >= 65 && letter <= 81) { //Unnecessary
+                alert("You went off board");
             } else {
                 userPos = newPos;
-                updateBoardMove(currentPos, userPos);
+                updateBoard(currentPos, userPos);
             }
+            alert(userPos);
         }
 
         function moveDown() {
@@ -78,12 +86,16 @@
             let number = parseInt(currentPos.substring(1, currentPos.length)) + 1;
             let newPos = letter + number.toString();
             if (document.getElementById(newPos).className === "obstacle") {
+                alert("You moved into an obstacle");
             } else if (document.getElementById(newPos).className === "box") {
-            } else if (number < 1 && number > 10) { 
+                alert("You moved into a box");
+            } else if (number < 1 && number > 10) { //Unnecessary
+                alert("You went off the board");
             } else {
                 userPos = newPos;
-                updateBoardMove(currentPos, userPos);
+                updateBoard(currentPos, userPos);
             }
+            alert(userPos)
         }
 
         function moveRight() {
@@ -93,19 +105,16 @@
             let number = currentPos.substring(1, currentPos.length);
             let newPos = newLetter + number;
             if (document.getElementById(newPos).className === "obstacle") {
+                alert("You moved into an obstacle");
             } else if (document.getElementById(newPos).className === "box") {
+                alert("You moved into a box");
             } else if (letter >= 65 && letter <= 81) {
+                alert("You went off board"); //Unnecessary
             } else {
                 userPos = newPos;
-                updateBoardMove(currentPos, userPos);
+                updateBoard(currentPos, userPos);
             }
-        }
-
-        function placeBomb(userPos) {
-            document.getElementById(userPos).style.backgroundColor = "darkblue";
-            setTimeout(function () {
-                document.getElementById(userPos).style.backgroundColor = "skyblue";
-            }, 3000);
+            alert(userPos);
         }
 
         function keyDownTextField(e) {
@@ -125,7 +134,7 @@
                     moveRight();
                     break;
                 case ' ':
-                    placeBomb(userPos);
+                    placeBomb();
                     break;
             }
         }
