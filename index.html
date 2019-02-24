@@ -23,6 +23,9 @@
             height: 66px;
             width: 66px;
         }
+        img {
+            width: 90%;
+        }
 
         .obstacle {
             background-color: slategray;
@@ -49,7 +52,7 @@
 
         function updateBoardMove(oldPos, newPos) {
             document.getElementById(oldPos).innerHTML = "";
-            document.getElementById(newPos).innerHTML = "&#9820;";
+            document.getElementById(newPos).innerHTML = "<img src=\'https://www.thoughtco.com/thmb/0q-vMTumNDzhdr6g1H482dOl01o=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/harambe_edited-575887f15f9b5892e849bcfe.jpg'>";
             checkDeath();
         }
 
@@ -327,7 +330,7 @@
 
         </td>
         <td id="b2" class="spawn">
-            &#9820;
+            <img src="https://www.thoughtco.com/thmb/0q-vMTumNDzhdr6g1H482dOl01o=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/harambe_edited-575887f15f9b5892e849bcfe.jpg" alt="description here" />
         </td>
         <td id="c2" class="spawn">
 
