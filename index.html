@@ -23,28 +23,73 @@
         .box {
             background-color: saddlebrown;
         }
+
+        .user {
+
+        }
+
+        .empty {
+            background-color: white; /* This color should be changed later  */
+        }
     </style>
     <script>
         document.addEventListener("keydown", keyDownTextField);
 
+        var userPos = "b2";
+
+        function moveUp(){
+            let currentPos = userPos;
+            let letter = currentPos.charAt(0);
+            let num = currentPos.substring(1, currentPos.length);
+            num -= 1;
+            if (document.getElementById(newPos).class === "obstacle") {
+                alert("YO SHITS FUCKED")
+            }
+            else if (num < 1 && num > 10){
+                alert("YO SHITS FUCKED")
+            }
+            else{
+                userPos = newPos;
+            }
+            alert(letter + num)
+        }
+        function moveLeft(){
+
+        }
+        function moveDown(){
+            let currentPos = userPos;
+            let letter = currentPos.charAt(0);
+            let number = parseInt(currentPos.substring(1,currentPos.length)) + 1;
+            let newPos = letter + number.toString();
+            if (document.getElementById(newPos).class === "obstacle") {
+                newPos = userPos;
+            }
+            return newPos
+        }
+        function moveRight(){
+            userPos.charCodeAt(0) + 1;
+            return userPos
+        }
+
         function keyDownTextField(e) {
             var keyCode = e.keyCode;
+            keyCode = String.fromCharCode(keyCode);
             switch(keyCode) {
-                case 87:
-                    alert("You hit the w key.");
+                case 'W':
+                    moveUp();
                     break;
-                case 65:
-                    alert("u pressed a");
+                case 'A':
+                    moveLeft();
                     break;
-                case 83:
-                    alert("u pressed s");
+                case 'S':
+                    moveDown();
                     break;
-                case 68:
-                    alert("u pressed d");
+                case 'D':
+                    moveRight();
                     break;
             }
         }
-        </script>
+    </script>
 </head>
 <body>
 <!--Fixed Table Test-->
