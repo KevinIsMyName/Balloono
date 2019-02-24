@@ -45,6 +45,7 @@
         function updateBoardMove(oldPos, newPos) {
             document.getElementById(oldPos).innerHTML = "";
             document.getElementById(newPos).innerHTML = "&#9820;";
+            checkDeath();
         }
 
         function moveUp() {
@@ -250,6 +251,7 @@
                     break;
             }
         }
+
         function checkDeath() {
             if (document.getElementById(userPos).style.backgroundColor === "skyblue") {
                 location.reload();
