@@ -129,6 +129,33 @@
             }
         }
 
+        function splashDirection(pos) {
+            if (document.getElementById(pos).className === "obstacle") {
+                //do nothing
+            } else if (document.getElementById(pos).className === "box") {
+                setTimeout(function () {
+                    document.getElementById(pos).className = "grass";
+                    let rand = parseInt(Math.random() * 15);
+                    if (rand < 15) {
+                        document.getElementById("message").innerHTML = "You found a meme!";
+                        window.open("./memes/" + memeURLs[rand], '_blank"');
+                        setTimeout(function () {
+                            document.getElementById("message").innerHTML = "The Search for the Meming of Life";
+                        }, 2000);
+                    }
+                }, 3500);
+            } else {
+                setTimeout(function () {
+                    document.getElementById(pos).style.backgroundColor = "skyblue";
+                    checkDeath();
+
+                }, 3000);
+                setTimeout(function () {
+                    document.getElementById(pos).style.backgroundColor = "darkgreen";
+                }, 3500);
+            }
+        }
+
         function placeBomb(userPos) {
             document.getElementById(userPos).style.backgroundColor = "darkblue";
             setTimeout(function () {
@@ -142,7 +169,6 @@
             let checkPos = [];
             let num = parseInt(userPos.substring(1, userPos.length));
             let letter = userPos.charAt(0);
-            let rand;
 
             //Calculating left, up right, down grids
             let posRight = letter.charCodeAt(0) + 1;
@@ -153,107 +179,15 @@
             let posDown = letter + (num + 1).toString();
             checkPos.push(posRight, posUp, posLeft, posDown);
 
-
             //splash right
-            if (document.getElementById(posRight).className === "obstacle") {
-                //do nothing
-            } else if (document.getElementById(posRight).className === "box") {
-                setTimeout(function () {
-                    document.getElementById(posRight).className = "grass";
-                    rand = parseInt(Math.random() * 15);
-                    if (rand < 15) {
-                        document.getElementById("message").innerHTML = "You found a meme!";
-                        window.open("./memes/" + memeURLs[rand], '_blank"');
-                        setTimeout(function() {
-                            document.getElementById("message").innerHTML = "The Search for the Meming of Life";
-                        }, 2000);
-                    }
-                }, 3500);
-            } else {
-                setTimeout(function () {
-                    document.getElementById(posRight).style.backgroundColor = "skyblue";
-                    checkDeath();
-
-                }, 3000);
-                setTimeout(function () {
-                    document.getElementById(posRight).style.backgroundColor = "darkgreen";
-                }, 3500);
-            }
-            //splash top
-            if (document.getElementById(posUp).className === "obstacle") {
-                //do nothing
-            } else if (document.getElementById(posUp).className === "box") {
-                setTimeout(function () {
-                    document.getElementById(posUp).className = "grass";
-                    rand = parseInt(Math.random() * 100);
-                    if (rand < 15) {
-                        document.getElementById("message").innerHTML = "You found a meme!";
-                        window.open("./memes/" + memeURLs[rand], '_blank"');
-                        setTimeout(function() {
-                            document.getElementById("message").innerHTML = "The Search for the Meming of Life";
-                        }, 2000);
-                    }
-                }, 3500);
-            } else {
-                setTimeout(function () {
-                    document.getElementById(posUp).style.backgroundColor = "skyblue";
-                    checkDeath();
-
-                }, 3000);
-                setTimeout(function () {
-                    document.getElementById(posUp).style.backgroundColor = "darkgreen";
-                }, 3500);
-            }
+            splashDirection(posRight);
+            //splash up
+            splashDirection(posLeft);
             //splash left
-            if (document.getElementById(posLeft).className === "obstacle") {
-                //do nothing
-            } else if (document.getElementById(posLeft).className === "box") {
-                setTimeout(function () {
-                    document.getElementById(posLeft).className = "grass";
-                    rand = parseInt(Math.random() * 100);
-                    if (rand < 15) {
-                        document.getElementById("message").innerHTML = "You found a meme!";
-                        window.open("./memes/" + memeURLs[rand], '_blank"');
-                        setTimeout(function() {
-                            document.getElementById("message").innerHTML = "The Search for the Meming of Life";
-                        }, 2000);
-                    }
-                }, 3500);
-            } else {
-                setTimeout(function () {
-                    document.getElementById(posLeft).style.backgroundColor = "skyblue";
-                    checkDeath();
-
-                }, 3000);
-                setTimeout(function () {
-                    document.getElementById(posLeft).style.backgroundColor = "darkgreen";
-                }, 3500);
-            }
+            splashDirection(posUp);
             //splash down
-            if (document.getElementById(posDown).className === "obstacle") {
-                //do nothing
-            } else if (document.getElementById(posDown).className === "box") {
-                setTimeout(function () {
-                    document.getElementById(posDown).className = "grass";
-                    rand = parseInt(Math.random() * 100);
-                    if (rand < 15) {
-                        document.getElementById("message").innerHTML = "You found a meme!";
-                        window.open("./memes/" + memeURLs[rand], '_blank"');
-                        setTimeout(function() {
-                            document.getElementById("message").innerHTML = "The Search for the Meming of Life";
-                        }, 2000);
-                    }
-                }, 3500);
-            } else {
-                setTimeout(function () {
-                    document.getElementById(posDown).style.backgroundColor = "skyblue";
-                    checkDeath();
+            splashDirection(posLeft);
 
-                }, 3000);
-                setTimeout(function () {
-                    document.getElementById(posDown).style.backgroundColor = "darkgreen";
-                }, 3500);
-            }
         }
 
         function randomizeMap() {
