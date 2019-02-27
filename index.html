@@ -135,7 +135,7 @@
             } else if (document.getElementById(pos).className === "box") {
                 setTimeout(function () {
                     document.getElementById(pos).className = "grass";
-                    let rand = parseInt(Math.random() * 15);
+                    let rand = parseInt(Math.random() * 15 * 7);
                     if (rand < 15) {
                         document.getElementById("message").innerHTML = "You found a meme!";
                         window.open("./memes/" + memeURLs[rand], '_blank"');
