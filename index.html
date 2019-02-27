@@ -31,14 +31,20 @@
 
         .obstacle {
             background-color: slategray;
+            background-image: url("concrete.jpg");
         }
 
         .grass {
             background-color: darkgreen;
+            background-image: url("grass.jpg");
+            background-size: 90%;
+
         }
 
         .spawn {
             background-color: darkgreen;
+            background-image: url("grass.jpg");
+            background-size: 90%;
         }
 
         .box {
@@ -50,17 +56,20 @@
         }
 
 
+
+
     </style>
     <script>
 
         document.addEventListener("keydown", keyDownTextField);
         var userPos = "b2";
-        var memeURLs = ["bigfoot.jpg", "EAbanter.jpg", "funkytown.jpg", "handle.jpg", "hat.jpg", "lionkingmeme.jpg",
+        var memeURLs1 = ["bigfoot.jpg", "EAbanter.jpg", "funkytown.jpg", "handle.jpg", "hat.jpg", "lionkingmeme.jpg",
             "marriage.jpg", "minecraft.jpg", "patrick.jpg", "pika.jpg", "rare.jpg", "revolutions.png",
             "skypespotsteam.jpg", "spiderman.png", "thanos.jpg"];
 
         function updateBoardMove(oldPos, newPos) {
-            document.getElementById(oldPos).innerHTML = "";
+            if (document.getElementById(oldPos).style.backgroundColor != "darkblue")
+                document.getElementById(oldPos).innerHTML = "";
             document.getElementById(newPos).innerHTML = "<img src=\'harambe.jpg'>";
             checkDeath();
         }
@@ -147,23 +156,28 @@
             } else {
                 setTimeout(function () {
                     document.getElementById(pos).style.backgroundColor = "skyblue";
+                    document.getElementById(pos).innerHTML = "<img src=\'waterSplash.jpg'>";
                     checkDeath();
 
                 }, 3000);
                 setTimeout(function () {
                     document.getElementById(pos).style.backgroundColor = "darkgreen";
+                    document.getElementById(pos).innerHTML = "<img src=\'grass.jpg'>";
                 }, 3500);
             }
         }
 
         function placeBomb(userPos) {
             document.getElementById(userPos).style.backgroundColor = "darkblue";
+            document.getElementById(userPos).innerHTML = "<img src=\'grassWithBalloon.jpg'>";
             setTimeout(function () {
                 document.getElementById(userPos).style.backgroundColor = "skyblue";
+                document.getElementById(userPos).innerHTML = "<img src=\'waterSplash.jpg'>";
                 checkDeath();
             }, 3000);
             setTimeout(function () {
                 document.getElementById(userPos).style.backgroundColor = "darkgreen";
+                document.getElementById(userPos).innerHTML = "<img src=\'grass.jpg'>";
             }, 3500);
 
             let checkPos = [];
